@@ -1,0 +1,37 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Net;
+
+namespace _01.Count_Real_Numbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double[] array = Console.ReadLine()
+                .Split()
+                .Select(double.Parse)
+                .ToArray();
+
+            SortedDictionary<double, int> numbers = new SortedDictionary<double, int>();
+
+            foreach (var goodJob in array)
+            {
+                if (numbers.ContainsKey(goodJob))
+                {
+                    numbers[goodJob]++;
+                }
+                else
+                {
+                    numbers.Add(goodJob, 1);
+                }
+            }
+
+            foreach (var goodJob in numbers)
+            {
+                Console.WriteLine($"{goodJob.Key} -> {goodJob.Value}");
+            }
+        }
+    }
+}
